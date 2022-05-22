@@ -20,7 +20,11 @@ function MovieAdd({ movies, setMovies }) {
   return (
     <div style={{ marginTop: "20px" }}>
       <>
-        <Button variant="dark" onClick={handleShow}>
+        <Button
+          style={{ display: "block", margin: "0 auto" }}
+          variant="dark"
+          onClick={handleShow}
+        >
           +
         </Button>
 

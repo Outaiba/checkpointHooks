@@ -5,6 +5,13 @@ import Navigation from "./components/Navigation";
 import MovieCard from "./components/MovieCard";
 import MovieList from "./components/MovieList";
 import { useState } from "react";
+import Home from "./components/Home";
+
+import * as React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Trailer from "./components/Trailer";
 
 function App() {
   const [movies, setMovies] = useState([
@@ -117,15 +124,27 @@ function App() {
   const [text, setText] = useState("");
   const [rating, setRating] = useState("");
   return (
-    <div className="App">
-      <Navigation setText={setText} setRating={setRating} />
-      <MovieList
-        movies={movies}
-        setMovies={setMovies}
-        text={text}
-        rating={rating}
-      />
-    </div>
+    <>
+      <div className="App">
+        <Navigation setText={setText} setRating={setRating} />
+      </div>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <MovieList
+              movies={movies}
+              setMovies={setMovies}
+              text={text}
+              rating={rating}
+            />
+          }
+        />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/Trailer/:name" element={<Trailer movies={movies} />} />
+      </Routes>
+    </>
   );
 }
 

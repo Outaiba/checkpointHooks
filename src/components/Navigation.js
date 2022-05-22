@@ -2,22 +2,18 @@ import Button from "@restart/ui/esm/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import React from "react";
-import {
-  Container,
-  Form,
-  FormControl,
-  Nav,
-  Navbar,
-  NavDropdown,
-} from "react-bootstrap";
+import { Container, Form, FormControl, Nav, Navbar } from "react-bootstrap";
 import ReactStars from "react-rating-stars-component";
+import { Link } from "react-router-dom";
 
 function Navigation({ setText, setRating }) {
   return (
     <div>
       <Navbar bg="light" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="#">Movies app</Navbar.Brand>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Navbar.Brand href="#">Movies app</Navbar.Brand>
+          </Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -25,8 +21,13 @@ function Navigation({ setText, setRating }) {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link href="#action1">Cantact</Nav.Link>
-              <Nav.Link href="#action2">About</Nav.Link>
+              <Link to="/contact" style={{ textDecoration: "none" }}>
+                {" "}
+                <Nav.Link href="#action1">Contact</Nav.Link>
+              </Link>
+              <Link to="/about" style={{ textDecoration: "none" }}>
+                <Nav.Link href="#action2">About</Nav.Link>
+              </Link>
             </Nav>
             <samp style={{ marginRight: "20px" }}>
               <ReactStars
