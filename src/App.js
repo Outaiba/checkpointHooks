@@ -5,7 +5,6 @@ import Navigation from "./components/Navigation";
 import MovieCard from "./components/MovieCard";
 import MovieList from "./components/MovieList";
 import { useState } from "react";
-import Home from "./components/Home";
 
 import * as React from "react";
 import { Routes, Route, Link } from "react-router-dom";
