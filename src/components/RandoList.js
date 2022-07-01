@@ -1,11 +1,17 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import Home from "./Home";
 import MovieAdd from "./MovieAdd";
-import MovieCard from "./MovieCard";
+import RandoCard from "./RandoCard";
 
-function MovieList({ movies, setMovies, text, rating }) {
+function RandoList({ text, rating }) {
+  const randos = useSelector((state) => state.rando.randoList);
+  console.log(randos);
+
   return (
     <div>
-      <MovieAdd movies={movies} setMovies={setMovies} />
+      <Home />
+      <MovieAdd />
       <div
         style={{
           display: "flex",
@@ -15,17 +21,17 @@ function MovieList({ movies, setMovies, text, rating }) {
           justifyContent: "space-around",
         }}
       >
-        {movies
+        {randos
           .filter(
             (el) =>
               el.name.toLowerCase().includes(text.toLowerCase()) &&
               el.rating >= rating
           )
-          .map((el) => <MovieCard movie={el} />)
+          .map((el) => <RandoCard rando={el} />)
           .reverse()}
       </div>
     </div>
   );
 }
 
-export default MovieList;
+export default RandoList;

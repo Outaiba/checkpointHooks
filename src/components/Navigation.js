@@ -8,12 +8,13 @@ import { Link } from "react-router-dom";
 
 function Navigation({ setText, setRating }) {
   return (
-    <div>
+    <div style={{}}>
       <Navbar bg="light" expand="lg">
         <Container fluid>
           <Link to="/" style={{ textDecoration: "none" }}>
-            <Navbar.Brand href="#">Movies app</Navbar.Brand>
+            <Navbar.Brand href="#">Rando</Navbar.Brand>
           </Link>
+
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -22,21 +23,17 @@ function Navigation({ setText, setRating }) {
               navbarScroll
             >
               <Link to="/contact" style={{ textDecoration: "none" }}>
-                {" "}
                 <Nav.Link href="#action1">Contact</Nav.Link>
               </Link>
+
               <Link to="/about" style={{ textDecoration: "none" }}>
                 <Nav.Link href="#action2">About</Nav.Link>
               </Link>
+
+              <Link to="/slide" style={{ textDecoration: "none" }}>
+                <Nav.Link href="#action4">Slide</Nav.Link>
+              </Link>
             </Nav>
-            <samp style={{ marginRight: "20px" }}>
-              <ReactStars
-                count={5}
-                size={40}
-                activeColor="#ffd700"
-                onChange={(newRating) => setRating(newRating)}
-              />
-            </samp>
 
             <Form className="d-flex">
               <FormControl

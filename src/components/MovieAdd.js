@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { addRando } from "../js/RandoSlice";
 
-function MovieAdd({ movies, setMovies }) {
-  const handleAdd = () => {
-    setMovies([...movies, newMovie]);
-    handleClose();
-  };
-
+function MovieAdd() {
   const [show, setShow] = useState(false);
-
+  const dispatch = useDispatch();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [newMovie, setNewMovie] = useState({
+  const [newRando, setNewRando] = useState({
     name: "",
     posterurl: "",
     description: "",
@@ -30,63 +27,43 @@ function MovieAdd({ movies, setMovies }) {
 
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Add movies</Modal.Title>
+            <Modal.Title>Add Rando</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <>
-              <Form.Label htmlFor="inputPassword5">name</Form.Label>
+              <Form.Label htmlFor="">Lieu</Form.Label>
               <Form.Control
                 type="text"
-                id="inputPassword5"
-                aria-describedby="passwordHelpBlock"
                 onChange={(e) =>
-                  setNewMovie({ ...newMovie, name: e.target.value })
+                  setNewRando({ ...newRando, name: e.target.value })
                 }
               />
-              <Form.Text id="passwordHelpBlock" muted></Form.Text>
-            </>
-            <>
-              <Form.Label htmlFor="inputPassword5">URL</Form.Label>
+              <Form.Label htmlFor="">URL Image</Form.Label>
               <Form.Control
                 type="text"
-                id="inputPassword5"
-                aria-describedby="passwordHelpBlock"
                 onChange={(e) =>
-                  setNewMovie({ ...newMovie, posterurl: e.target.value })
+                  setNewRando({ ...newRando, posterurl: e.target.value })
                 }
               />
-              <Form.Text id="passwordHelpBlock" muted></Form.Text>
-            </>
-            <>
-              <Form.Label htmlFor="inputPassword5">description</Form.Label>
+              <Form.Label htmlFor="">description</Form.Label>
               <Form.Control
                 type="text"
-                id="inputPassword5"
-                aria-describedby="passwordHelpBlock"
                 onChange={(e) =>
-                  setNewMovie({ ...newMovie, description: e.target.value })
+                  setNewRando({ ...newRando, description: e.target.value })
                 }
               />
-              <Form.Text id="passwordHelpBlock" muted></Form.Text>
-            </>
-            <>
-              <Form.Label htmlFor="inputPassword5">rating</Form.Label>
-              <Form.Control
-                type="text"
-                id="inputPassword5"
-                aria-describedby="passwordHelpBlock"
-                onChange={(e) =>
-                  setNewMovie({ ...newMovie, rating: e.target.value })
-                }
-              />
-              <Form.Text id="passwordHelpBlock" muted></Form.Text>
             </>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={handleAdd}>
+            <Button
+              variant="primary"
+              onClick={() => {
+                dispatch(addRando(newRando));
+              }}
+            >
               Add Movie
             </Button>
           </Modal.Footer>
